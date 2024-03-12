@@ -1,19 +1,24 @@
+
+
+from utils.paraleliza import consulta_id
+from utils.nao_paraleliza import numero_par
+
 from joblib import Parallel, delayed
 
-lista_de_um_bilhao_itens = [numero for numero in range(1, 50_000_001)]
-
-def numero_par(numero: int) -> bool:
-    if numero % 2 == 0:
-        return True
-    else:
-        return False
 
 
-print(lista_de_um_bilhao_itens[:6],"\n", lista_de_um_bilhao_itens[-6:-1])
-print(len(lista_de_um_bilhao_itens))
+lista_ids = [id for id in range(1, 1_000_000)]
 
-#resultados = [numero_par(num) for num in lista_de_um_bilhao_itens]
-resultados = Parallel(n_jobs=-1)(delayed(numero_par)(num) for num in lista_de_um_bilhao_itens)
+"""Execução onde o processmanto é paralelizado (Utilização de I/O)"""
 
-print(resultados[:6],"\n", resultados[-6:-1])
-print(len(resultados))
+#execucao = [consulta_id(resultado) for resultado in lista_ids]
+execucao = Parallel(n_jobs=-1)(delayed(consulta_id)(id) for id in lista_ids)
+
+
+"""Execução onde o processmanto não paraleliza de forma eficiênte (Utilização de CPU)"""
+
+#execucao = [numero_par(resultado) for resultado in lista_ids]
+#execucao = Parallel(n_jobs=-1)(delayed(numero_par)(id) for id in lista_ids)
+
+
+print(execucao[:10])
