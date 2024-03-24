@@ -5,8 +5,7 @@ from joblib import Parallel, delayed
 def numero_par(numero: int) -> bool:
     """
     Esta função, por utilizar a CPU de maneira intensa,
-    não paraleliza de forma eficiente. Para mais detalhes,
-    pesquise sobre: Python Global Interpreter Lock (GIL).
+    não paraleliza de forma eficiente.
     """
     if numero % 2 == 0:
         return True
@@ -18,8 +17,7 @@ def consulta_numero(numero: int) -> bool:
     """
     Esta função, por fazer uso de recursos de I/O, o que por
     sua vez torna a CPU ociosa por alguns instantes, permite
-    que a paralelização seja mais eficiente. Para mais detalhes,
-    pesquise sobre: Python Global Interpreter Lock (GIL).
+    que a paralelização seja mais eficiente.
     """
     with open("./base_consulta.txt", "r+") as arquivo:
         base_consulta = [int(id.strip("\n")) for id in arquivo.readlines()]
