@@ -36,7 +36,7 @@ lista_numeros = [id for id in range(0, 5_000_000)]
 # resultado = [numero_par(numero) for numero in lista_numeros] 
 
 # Execução em multiplas threads
-# resultado = Parallel(n_jobs=10)(delayed(numero_par)(id) for id in lista_numeros)
+# resultado = Parallel(n_jobs=10)(delayed(numero_par)(numero) for numero in lista_numeros)
 
 """Funções que utilizam de recuros de I/O paralelizam de forma mais eficiente."""
 
@@ -44,7 +44,7 @@ lista_numeros = [id for id in range(0, 5_000_000)]
 #resultado = [consulta_numero(numero) for numero in lista_numeros] 
 
 # Execução em multiplas threads
-resultado = Parallel(n_jobs=10)(delayed(consulta_numero)(id) for id in lista_numeros)
+resultado = Parallel(n_jobs=10)(delayed(consulta_numero)(numero) for numero in lista_numeros)
 
 
 print(f'A quantidade de itens da lista são: {len(lista_numeros)}')
