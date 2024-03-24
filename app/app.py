@@ -30,7 +30,7 @@ def consulta_numero(numero: int) -> bool:
 
 lista_numeros = [id for id in range(0, 5_000_000)]
 
-"""Funções que utilizam intensamente CPU (Cálculos matemáticos) não paralelizam muito bem."""
+"""Funções que utilizam intensamente de CPU (Cálculos matemáticos) não paralelizam muito bem."""
 
 # Execução em uma única thread
 # resultado = [numero_par(numero) for numero in lista_numeros] 
